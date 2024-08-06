@@ -1,0 +1,7 @@
+{
+  "name": "Frizer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
