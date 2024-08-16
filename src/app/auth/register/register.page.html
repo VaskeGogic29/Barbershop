@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+    <div class="register-wrapper">
+      <ion-list lines="inset">
+        <ion-item>
+          <ion-label position="stacked">Ime:</ion-label>
+          <ion-input type="text" placeholder="Papadubi" ngModel name="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Prezime:</ion-label>
+          <ion-input type="text" placeholder="Žorž" ngModel name="surname" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Korisničko ime:</ion-label>
+          <ion-input type="email" placeholder="ex. papadubi@gmail.com" ngModel name="email" required email #email="ngModel"></ion-input>
+        </ion-item>
+        <ion-item lines="none" *ngIf="email.invalid && email.touched">
+          <ion-label>Unesite ispravnu email adresu</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Šifra:</ion-label>
+          <ion-input type="password" placeholder="Vaša šifra" ngModel name="password" required minlength="7" #password="ngModel"></ion-input>
+        </ion-item>
+        <ion-item lines="none" *ngIf="password.invalid && password.touched">
+          <ion-label>Minimum je sedam karaktera</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-button type="submit" expand="block" color="primary" style="margin-top: 20px;" [disabled]="registerForm.invalid">Prijavi se</ion-button>
+    </div>
+  </form>
+</ion-content>
+
