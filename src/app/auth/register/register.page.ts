@@ -17,7 +17,7 @@ export class RegisterPage implements OnInit {
   onRegister(form: NgForm) {
     if (form.valid) {
       console.log('Registration Successful', form.value);
-      // Handle registration logic here, e.g., send data to server
+      //srediti logiku kad se poveze na bazu
       this.router.navigateByUrl('/pocetna');
     } else {
       console.log('Form is invalid');

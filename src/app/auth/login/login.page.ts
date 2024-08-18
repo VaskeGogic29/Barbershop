@@ -29,7 +29,6 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/pocetna');
     } else {
       console.log('Form is invalid');
-      // Optionally, you can add code here to highlight invalid fields or display an error message
     }
   }
 

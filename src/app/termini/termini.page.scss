@@ -1,0 +1,67 @@
+
+ion-header {
+    --background: #f8f9fa; 
+  }
+  
+  ion-toolbar {
+    --background: #ffffff;
+  }
+  
+  ion-content {
+    padding: 16px;
+  }
+  
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  
+  .no-appointments {
+    text-align: center;
+    font-size: 1.2em;
+  }
+  
+  
+  .appointment-list {
+    margin-top: 10px;
+  }
+  
+  .appointment-item {
+    background-color: #ffffff; 
+    margin-bottom: 10px;
+    border-radius: 8px; 
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .appointment-item ion-avatar {
+    margin-right: 10px;
+  }
+  
+  .appointment-item ion-label {
+    flex: 1;
+  }
+  
+  .appointment-item ion-label h3 {
+    font-size: 1.2em;
+    margin: 0;
+  }
+  
+
+  .appointment-item ion-label p {
+    margin: 0; 
+  }
+  
+  
+  .section-header {
+    font-size: 1.4em;
+    margin-top: 20px;
+    border-bottom: 2px solid #007bff; 
+    padding-bottom: 5px;
+  }
+  
+  

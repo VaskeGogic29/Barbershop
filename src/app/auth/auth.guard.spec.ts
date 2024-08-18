@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { AuthGuard } from './auth.guard'; // Ensure correct import path
+import { AuthGuard } from './auth.guard'; 
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;
@@ -16,7 +16,7 @@ describe('AuthGuard', () => {
   });
 
   it('should return true for canLoad', () => {
-    const result = guard.canLoad({} as any, [] as any); // Adjust based on actual route/segments
-    expect(result).toBe(true); // Adjust based on actual logic
+    const result = guard.canLoad({} as any, [] as any); 
+    expect(result).toBe(true); 
   });
 });

@@ -1,17 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons>
-      <ion-back-button defaultHref="/pocetna"></ion-back-button>
+      <ion-back-button *ngIf="!selectedEmployee" defaultHref="/pocetna"></ion-back-button>
+      <ion-button *ngIf="selectedEmployee" (click)="backToEmployeeList()" color="light">
+        <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Zaposleni
+      </ion-button>
     </ion-buttons>
-
-    <ion-title>zaposleni</ion-title>
+    <!-- <ion-title>Zaposleni</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">zaposleni</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-list *ngIf="!selectedEmployee" class="employee-list">
+    <ion-item *ngFor="let employee of employees" (click)="selectEmployee(employee)" class="employee-item">
+      <ion-avatar slot="start">
+        <img src="assets/zaposleni.jpg" alt="Employee Avatar">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ employee.name }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  
+  <div *ngIf="selectedEmployee">
+    <ion-datetime 
+    placeholder="Odaberite datum" 
+    (ionChange)="onDateChange($event)" 
+    locale="sr-RS">
+  </ion-datetime>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let time of timeSlots" size="3">
+          <ion-button expand="block" color="primary" (click)="selectTime(time)">
+            {{ time }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
+
+
+
+

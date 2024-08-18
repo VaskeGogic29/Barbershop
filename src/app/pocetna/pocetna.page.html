@@ -1,21 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="light"></ion-menu-button>
     </ion-buttons>
-    <ion-title>pocetna</ion-title>
+    <!-- <ion-title>Pocetna</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">pocetna</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-buttons class="ion-justify-content-center">
-    <ion-button routerLink="/termini" color="tertiary" fill="solid">
-      Termini
-    </ion-button>
-  </ion-buttons>
+  
+  <div class="image-container">
+    <img src="assets/prva slika.jpg" alt="Barbershop" class="barbershop-image">
+    <ion-button expand="block" color="primary" (click)="navigateToZaposleni()" class="bottom-button">Zakažite svoj termin</ion-button>
+  </div>
+
+  
+  <div class="about-us">
+    <h2>O nama</h2>
+    <h2>Ko smo mi?</h2>
+    <p>Dobrodošli u naš frizerski salon Vlada, mesto gde stil susreće strast. Naša misija je jednostavna: da vam pružimo vrhunsko iskustvo, bilo da ste ovde zbog klasične frizure, moderne transformacije ili savršenog brijanja. Sa pažnjom na detalje i individualnim pristupom, trudimo se da svaki Vaš dolazak bude više od običnog šišanja – to je trenutak posvećen samo vama.</p>
+    
+   
+    <div class="contact-info">
+      <ion-icon name="call" size="large"></ion-icon>
+      <p>+381 61 11 75 338</p>
+
+      <ion-icon name="logo-instagram" size="large"></ion-icon>
+      <p>barbershop</p>
+
+      <ion-icon name="logo-facebook" size="large"></ion-icon>
+      <p>Barbershop FB</p>
+    </div>
+  </div>
+
+ 
+  <div class="image-container">
+    <img src="assets/druga slika.jpg" alt="Barbershop" class="barbershop-image">
+    <ion-button expand="block" color="secondary" (click)="navigateToRegister()" class="bottom-button">Napravi nalog</ion-button>
+  </div>
+
+  <div class="location-info">
+    <h2>Kako do nas?</h2>
+    <p>Beogradska 189, Sremčica 11253</p>
+    <div class="image-container">
+      <img src="assets/treca slika.png" alt="Barbershop mapa" class="barbershop-image">
+    </div>
+  </div>
 </ion-content>
+

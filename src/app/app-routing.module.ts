@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'pocetna',
     loadChildren: () => import('./pocetna/pocetna.module').then( m => m.PocetnaPageModule),
-    canLoad: [AuthGuard]  // Protect the lazy-loaded module
+    canLoad: [AuthGuard]  
 
   },
   {

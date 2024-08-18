@@ -14,7 +14,7 @@ export class AuthGuard implements CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-    // // Replace this with your actual authentication check
+    
     // const isAuthenticated = false; 
 
     if (!this.authService.isUserAuthenticated) {

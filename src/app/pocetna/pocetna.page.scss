@@ -1,0 +1,67 @@
+.image-container {
+    position: relative;
+    text-align: center;
+    // margin: 20px 0;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .bottom-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; 
+    max-width: 300px; 
+  }
+  
+  .barbershop-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .about-us {
+    padding: 20px;
+    text-align: center;
+  
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 1.2em;
+      color: rgb(43, 43, 44);
+    }
+  }
+
+  .about-us-section {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-info ion-icon {
+    margin-top: 15px;
+    color: #3b5998; 
+  }
+  
+  .contact-info p {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
+  .location-info{
+    padding: 20px;
+    text-align: center;
+  }

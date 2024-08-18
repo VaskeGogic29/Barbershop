@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pocetna',
   templateUrl: './pocetna.page.html',
   styleUrls: ['./pocetna.page.scss'],
 })
-export class PocetnaPage implements OnInit {
+export class PocetnaPage {
+  
+  constructor(private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  navigateToZaposleni() {
+    this.router.navigateByUrl('/zaposleni');
   }
 
+  navigateToRegister() {
+    this.router.navigateByUrl('/register');
+  }
 }
