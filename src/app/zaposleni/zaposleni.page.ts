@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeSr from '@angular/common/locales/sr';
 import { AlertController } from '@ionic/angular';
+import { EmployeeService } from '../services/employee.service';//pazi ovde
+import { Employee } from '../models/employee.model';//pazi ovde
+//pazi ovoo
+import { AuthService } from '../auth/auth.service';
+import { AppointmentService } from '../services/appointment.service';
+
 
 @Component({
   selector: 'app-zaposleni',
@@ -9,17 +15,10 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./zaposleni.page.scss'],
 })
 export class ZaposleniPage implements OnInit {
-  employees = [
-    { name: 'Vlada' },
-    { name: 'Sale' },
-    { name: 'Milan' },
-    { name: 'Ivana' },
-    { name: 'Srba' },
-    { name: 'Sretenka' },
-    // KAda povezes sa bazom resi drugacije
-  ];
+  
 
-  selectedEmployee: any = null;
+  employees: Employee[] = [];
+  selectedEmployee: Employee | null = null;
   selectedDate: string | null = null; 
 
   timeSlots = [
@@ -30,10 +29,30 @@ export class ZaposleniPage implements OnInit {
     '17:00', '17:30', '18:00', '18:30'
   ];
 
-  constructor(private alertController: AlertController) {}
+  constructor(
+    private alertController: AlertController,
+    private employeeService: EmployeeService,
+    //pazi ovde
+    private appointmentService: AppointmentService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     registerLocaleData(localeSr);
+    this.fetchEmployees(); 
+  }
+
+
+  
+  fetchEmployees() {
+    this.employeeService.getEmployees().subscribe(
+      (employees) => {
+        this.employees = employees;
+      },
+      (error) => {
+        console.error('Error fetching employees:', error);
+      }
+    );
   }
 
   selectEmployee(employee: any) {
@@ -105,6 +124,22 @@ export class ZaposleniPage implements OnInit {
 
   confirmAppointment(employee: string, date: string, time: string) {
     console.log(`Confirmed appointment with ${employee} on ${date} at ${time}`);
-    // Logiku dodati ovdee
+    // Logiku dodati ovdee, pa ajde
+    const userEmail = this.authService.getUserEmail();
+    if (userEmail) {
+      this.appointmentService.addAppointment(userEmail, employee, date, time).subscribe(
+        () => {
+          console.log(`Appointment confirmed with ${employee} on ${date} at ${time}`);
+          this.showAlert('Uspešno', 'Vaš termin je uspešno zakazan.');
+          this.backToEmployeeList();
+        },
+        (error) => {
+          console.error('Error saving appointment:', error);
+          this.showAlert('Greška', 'Došlo je do greške prilikom zakazivanja termina.');
+        }
+      );
+    } else {
+      this.showAlert('Greška', 'Niste prijavljeni.');
+    }
   }
 }

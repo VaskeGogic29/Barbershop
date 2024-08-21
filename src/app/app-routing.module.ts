@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'employee-management',
+    loadChildren: () => import('./pages/employee-management/employee-management.module').then( m => m.EmployeeManagementPageModule)
+  },
   
 ];
 

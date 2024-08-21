@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Upravljanje zaposlenima</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let employee of employees">
+      <ion-label>{{ employee.name }}</ion-label>
+      <ion-button (click)="updateEmployee(employee)">Azuriraj</ion-button>
+      <ion-button color="danger" (click)="deleteEmployee(employee.id)">Obrisi</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">Ime novog zaposlenog</ion-label>
+    <ion-input [(ngModel)]="newEmployeeName"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="addEmployee()">Dodaj Zaposlenog</ion-button>
+</ion-content>

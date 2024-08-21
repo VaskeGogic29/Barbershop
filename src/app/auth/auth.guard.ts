@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,14 +16,13 @@ export class AuthGuard implements CanLoad {
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
     
-    // const isAuthenticated = false; 
-
     if (!this.authService.isUserAuthenticated) {
-      
       this.router.navigate(['/login']);
+      return false; 
     }
-    
 
-    return this.authService.isUserAuthenticated;
+
+    return true;
   }
 }
+

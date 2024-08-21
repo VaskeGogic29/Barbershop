@@ -24,11 +24,21 @@
           <ion-label>Napravi nalog</ion-label>
         </ion-item></ion-menu-toggle>
 
-        <ion-menu-toggle><ion-item> 
+
+        <!-- pazi ovde -->
+        <ion-menu-toggle *ngIf="isAdmin">
+          <ion-item routerLink="/employee-management">
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-label>Upravljanje zaposlenima</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle><ion-item (click)="onLogout()"> 
           <ion-icon name="log-out" slot="start"></ion-icon>
           <ion-label>Odjavi se</ion-label>
         </ion-item></ion-menu-toggle>
-        
+
+      
         
       </ion-list>
     </ion-content>

@@ -1,8 +1,9 @@
+
+
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,29 +12,34 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  private adminEmail = 'admin29@gmail.com';  // Replace with your actual admin email
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  // onLogIn(form: NgForm){
-  //   console.log(form);
-  //   this.authService.logIn();
-  //   this.router.navigateByUrl('/pocetna');
-  // }
-
-  onLogIn(form: NgForm) {
+  onLogin(form: NgForm) {
     if (form.valid) {
-      console.log('Form is valid:', form.value);
-      this.authService.logIn();
-      this.router.navigateByUrl('/pocetna');
+      const { email, password } = form.value;
+      this.authService.logIn(email, password)
+        .then((response) => {
+          console.log('Login successful:', response);
+
+          // Check if the logged-in email is the admin's email
+          if (email === this.adminEmail) {
+            this.router.navigateByUrl('/employee-management');
+          } else {
+            this.router.navigateByUrl('/pocetna');
+          }
+
+        })
+        .catch((error) => {
+          console.error('Login error:', error);
+        });
     } else {
       console.log('Form is invalid');
     }
   }
-
-
-
 }
-
 
