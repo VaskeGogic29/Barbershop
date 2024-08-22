@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,27 @@ export class AppointmentService {
     }
     return `?auth=${token}`;
   }
+
+  //zipa ovde
+
+  getUserAppointments(userEmail: string): Observable<any[]> {
+    return this.http.get<Record<string, any>>(this.firebaseUrl + this.getAuthParams()).pipe(
+      map(appointmentsData => {
+        if (!appointmentsData) return [];
+        return Object.values(appointmentsData)
+          .filter((appointment: any) => appointment.email === userEmail)
+          .map((appointment: any) => ({
+            ...appointment,
+            date: this.parseDate(appointment.date) // Parse the date string to a Date object
+          }));
+      })
+    );
+  }
+
+  private parseDate(dateString: string): Date {
+    const [day, month, year] = dateString.split('.').map(Number);
+    return new Date(year, month - 1, day); // Months are zero-based in JavaScript Date
+  }
+
 }
 

@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
   
-  <ion-list *ngIf="appointments.length === 0" class="no-appointments">
+  <ion-list *ngIf="upcomingAppointments.length === 0 && pastAppointments.length === 0" class="no-appointments">
     <ion-item>
       <ion-label>
         <h2>Nema zakazanih termina</h2>
@@ -16,7 +16,6 @@
     </ion-item>
   </ion-list>
 
-  
   <ion-list *ngIf="upcomingAppointments.length > 0">
     <ion-list-header>
       <h2>Predstojeći</h2>
@@ -27,12 +26,12 @@
       </ion-avatar>
       <ion-label>
         <h2>{{ appointment.employee }}</h2>
-        <p>{{ appointment.date | date: 'dd.MM.yyyy' }} u {{ appointment.time }}</p>
+        <p *ngIf="isValidDate(appointment.date)">{{ appointment.date | date: 'dd.MM.yyyy' }} u {{ appointment.time }}</p>
+        <p *ngIf="!isValidDate(appointment.date)">Datum nije dostupan</p>
       </ion-label>
     </ion-item>
   </ion-list>
 
-  
   <ion-list *ngIf="pastAppointments.length > 0">
     <ion-list-header>
       <h2>Prethodni</h2>
@@ -43,7 +42,8 @@
       </ion-avatar>
       <ion-label>
         <h2>{{ appointment.employee }}</h2>
-        <p>{{ appointment.date | date: 'dd.MM.yyyy' }} u {{ appointment.time }}</p>
+        <p *ngIf="isValidDate(appointment.date)">{{ appointment.date | date: 'dd.MM.yyyy' }} u {{ appointment.time }}</p>
+        <p *ngIf="!isValidDate(appointment.date)">Datum nije dostupan</p>
       </ion-label>
     </ion-item>
   </ion-list>
