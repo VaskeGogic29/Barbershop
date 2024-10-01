@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service'; // Ensure this path is correct
+import { EmployeeService } from '../../services/employee.service'; 
 import { Employee } from '../../models/employee.model';
 
 @Component({
@@ -35,18 +35,18 @@ export class EmployeeManagementPage implements OnInit {
     }
   }
 
-  updateEmployee(employee: Employee) {
-    this.employeeService.updateEmployee(employee).subscribe(() => {
-      this.loadEmployees(); 
-    });
-  }
+  // updateEmployee(employee: Employee) {
+  //   this.employeeService.updateEmployee(employee).subscribe(() => {
+  //     this.loadEmployees(); 
+  //   });
+  // }
 
   
 
   deleteEmployee(employeeId: string) {
     this.employeeService.deleteEmployee(employeeId).subscribe(
       () => {
-        this.loadEmployees(); // Refresh the list after deletion
+        this.loadEmployees();
       },
       error => {
         console.error('Delete operation failed:', error);

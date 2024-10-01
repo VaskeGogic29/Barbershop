@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginPage implements OnInit {
 
-  private adminEmail = 'admin29@gmail.com';  // Replace with your actual admin email
+  private adminEmail = 'admin29@gmail.com';  
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
         .then((response) => {
           console.log('Login successful:', response);
 
-          // Check if the logged-in email is the admin's email
+          
           if (email === this.adminEmail) {
             this.router.navigateByUrl('/employee-management');
           } else {

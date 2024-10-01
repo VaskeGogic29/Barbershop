@@ -31,7 +31,7 @@
     locale="sr-RS">
   </ion-datetime>
 
-    <ion-grid>
+    <!-- <ion-grid>
       <ion-row>
         <ion-col *ngFor="let time of timeSlots" size="3">
           <ion-button expand="block" color="primary" (click)="selectTime(time)">
@@ -39,7 +39,19 @@
           </ion-button>
         </ion-col>
       </ion-row>
+    </ion-grid> -->
+
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let time of availableTimeSlots" size="3">
+          <ion-button expand="block" color="primary" (click)="selectTime(time)">
+            {{ time }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-grid>
+    
+
   </div>
 </ion-content>
 

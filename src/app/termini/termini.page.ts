@@ -66,7 +66,7 @@ export class TerminiPage implements OnInit {
     if (userEmail) {
       this.appointmentService.getUserAppointments(userEmail).subscribe(
         (appointments) => {
-          console.log('Fetched appointments:', appointments); // Debug log
+          console.log('Fetched appointments:', appointments); 
           const currentDate = new Date();
           this.upcomingAppointments = appointments.filter(appointment => appointment.date >= currentDate);
           this.pastAppointments = appointments.filter(appointment => appointment.date < currentDate);
